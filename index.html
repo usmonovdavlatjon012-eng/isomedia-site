@@ -536,8 +536,11 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
 
 <script>
 (function(){
-  // UTM'ni sessiya davomida saqlash (sahifa yangilansa ham yo'qolmaydi)
-  try{var q0=new URLSearchParams(location.search),u0={};['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){if(q0.get(k))u0[k]=q0.get(k)});if(Object.keys(u0).length)sessionStorage.setItem('utm',JSON.stringify(u0))}catch(_){}
+  // UTM va fbclid'ni sessiya davomida saqlash; fbclid kelgan vaqtni CAPI fbc uchun eslab qolamiz
+  try{var q0=new URLSearchParams(location.search),u0={};['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){if(q0.get(k))u0[k]=q0.get(k)});
+    if(Object.keys(u0).length)sessionStorage.setItem('utm',JSON.stringify(u0));
+    if(u0.fbclid)localStorage.setItem('fbc','fb.1.'+Date.now()+'.'+u0.fbclid)}catch(_){}
+  function cookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):''}
 
   // Timecode (25 fps)
   var tc=document.getElementById('tc'),start=Date.now();
@@ -586,7 +589,8 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
     var eventId='lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
     var lead={name:name.value.trim(),phone:'+998'+phone.value.replace(/\D/g,''),type:type.value,
       comment:document.getElementById('other').value.trim(),website:document.getElementById('website').value,
-      page:location.origin+location.pathname,utm:utm,event_id:eventId};
+      page:location.origin+location.pathname,utm:utm,event_id:eventId,
+      fbp:cookie('_fbp'),fbc:cookie('_fbc')||(function(){try{return localStorage.getItem('fbc')||''}catch(_){return ''}})()};
 
     var btn=document.getElementById('submitBtn'),err=document.getElementById('formErr');
     btn.disabled=true;btn.textContent='Yuborilmoqda…';err.hidden=true;
