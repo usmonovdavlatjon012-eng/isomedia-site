@@ -1,13 +1,28 @@
-# ISOMEDIA — demo sayt
+# ISOMEDIA — landing sayt
 
-Video production studiya uchun bitta sahifali landing (mobil versiya).
+Video production studiya uchun targeting landingi (desktop + mobil). Vercel'da ishlaydi.
 
-- `index.html` — butun sayt (stil, skript va logotiplar ichida)
-- `favicon.png` — brauzer tab ikonkasi
+## Fayllar
+- `index.html` — sahifa (stil va skript ichida)
+- `assets/` — logotip va mijozlar logotiplari (WebP)
+- `api/lead.js` — ariza funksiyasi: amoCRM'ga lid + Telegram'ga xabar
+- `favicon.png`
 
-Saytni yangilash: GitHub'da `index.html` faylini o'zgartiring, Vercel avtomatik qayta chiqaradi.
+## Vercel → Settings → Environment Variables
+| O'zgaruvchi | Qiymat |
+|---|---|
+| `TELEGRAM_BOT_TOKEN` | BotFather bergan token |
+| `TELEGRAM_CHAT_ID` | guruh ID'si (`-100...`) |
+| `AMO_DOMAIN` | masalan `isomedia.amocrm.ru` |
+| `AMO_TOKEN` | amoCRM integratsiyasining uzoq muddatli tokeni |
+| `AMO_PIPELINE_ID` | (ixtiyoriy) voronka ID'si |
+| `AMO_STATUS_ID` | (ixtiyoriy) bosqich ID'si |
+| `AMO_RESPONSIBLE_ID` | (ixtiyoriy) mas'ul menejer ID'si |
 
-Keyingi qadamlar:
-1. Ariza formasini Telegram botga ulash (Vercel serverless funksiya orqali)
-2. Meta Pixel kodini `<head>` ichiga qo'shish
-3. O'z domenini ulash (masalan, isomedia.uz)
+O'zgaruvchilarni qo'shgandan keyin saytni qayta deploy qiling (Deployments → ⋯ → Redeploy).
+
+## Meta Pixel
+`index.html` boshidagi `window.PIXEL_ID=''` ga Pixel ID'ni yozing. PageView va Lead (eventID bilan, CAPI uchun tayyor) avtomatik ishlaydi.
+
+## Reklama linklari
+UTM qo'shing: `https://isomedia.uz/?utm_source=fb&utm_campaign=...` — UTM amoCRM izohiga va Telegram xabariga tushadi.
