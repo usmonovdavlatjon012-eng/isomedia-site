@@ -39,7 +39,7 @@ if(window.PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 html{background:#02080B}
 body{margin:0;background:var(--ink);color:var(--fog);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -67,7 +67,7 @@ section{padding-block:clamp(72px,9vw,120px)}
 
 /* Header */
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
-header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(6,20,27,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(74,92,106,.35)}
+header.top{position:relative;z-index:50;background:rgba(6,20,27,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(74,92,106,.35)}
 header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px}
 nav.links{display:flex;gap:30px}
 nav.links a{text-decoration:none;font-size:14px;color:var(--mist);transition:color .2s}
@@ -221,7 +221,7 @@ form{display:grid;gap:18px;margin-top:26px}
 .success{display:grid;gap:14px;justify-items:start;padding-block:12px}
 .success .ok{width:52px;height:52px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
 .success p{color:var(--steel)}
-@media (max-width:860px){.apply{grid-template-columns:1fr}}
+@media (max-width:860px){.apply{grid-template-columns:1fr}.apply .card{order:-1}}
 
 /* FAQ */
 .faq{display:grid;gap:0;border-top:1px solid rgba(74,92,106,.4);max-width:860px}
@@ -268,7 +268,7 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
       <a href="#savollar">Savollar</a>
       <a href="#aloqa">Aloqa</a>
     </nav>
-    <a class="btn btn-primary" href="#ariza">Ariza qoldirish</a>
+    <a class="btn btn-primary" href="#forma">Ariza qoldirish</a>
   </div>
 </header>
 
@@ -282,11 +282,11 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
           <span class="rec"><i></i>REC</span>
           <span class="meta"><span>4K · 25fps</span><span class="tc" id="tc">00:00:00:00</span></span>
         </div>
-        <p class="eyebrow">Video production studiya · Toshkent</p>
+        <p class="eyebrow">Video xizmatlar · Toshkent</p>
         <h1 style="margin-top:18px">Biznesingiz uchun <em>tizimlashgan</em> video production</h1>
-        <p class="lead">Reels, podkast, darslik, intervyu va seminar videolarini bitta jamoa tayyorlaydi. Har bir loyihaga alohida Project Manager biriktiriladi, tayyor kontent 5 ish kunida topshiriladi.</p>
+        <p class="lead">Reels, podkast, videodarslik, intervyu va seminar videolarini “Podklyuch” tayyorlab beramiz.</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#ariza">Bepul konsultatsiya olish <span aria-hidden="true">→</span></a>
+          <a class="btn btn-primary" href="#forma">Konsultatsiya olish <span aria-hidden="true">→</span></a>
           <a class="btn btn-ghost" href="#xizmatlar">Xizmatlarni ko'rish</a>
         </div>
         <div class="stats">
@@ -303,7 +303,6 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
     <div class="wrap">
       <div class="row">
         <p class="eyebrow">Bizga ishonch bildirgan loyihalar</p>
-        <small>Biznesingizning ishonchli hamkori sifatida, tizimga asoslanib ishlaymiz</small>
       </div>
       <ul class="names">
         <li><img src="assets/clients/edu-action.webp" alt="Edu-Action" width="360" height="84" loading="lazy" decoding="async"></li>
@@ -346,7 +345,7 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
         <div class="metric"><b>25</b><span>kishilik professional jamoa</span></div>
         <div class="metric"><b>1000+</b><span>oyiga tayyorlanadigan video</span></div>
         <div class="metric"><b>3</b><span>zamonaviy studiya zali</span></div>
-        <div class="metric"><b>5</b><span>bir vaqtda o'tkaziladigan syomka</span></div>
+        <div class="metric"><b>7</b><span>yillik tajriba</span></div>
       </div>
     </div>
   </section>
@@ -380,7 +379,6 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
           </ul>
         </div>
       </div>
-      <p class="compare-note">ISOMEDIA shunchaki studiya emas. Bu video ishlab chiqarishning har bir bosqichini yagona tizimga birlashtirgan production markaz.</p>
     </div>
   </section>
 
@@ -389,22 +387,15 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Xizmatlarimiz</p>
-        <h2>Har bir format uchun tayyor jarayon</h2>
-        <p class="lead">Har bir xizmat mijoz ehtiyojidan kelib chiqib, professional jamoa va tizimlashgan jarayon asosida bajariladi.</p>
+        <h2>ISOMEDIA shunchaki studiya emas. Bu video ishlab chiqarishning har bir bosqichini yagona tizimga birlashtirgan production.</h2>
       </div>
       <div class="services">
-        <article class="svc"><span class="fmt">9:16 · 15–90 s</span><h3>Reels</h3><p>Biznesingiz uchun tez tarqaladigan dinamik va qisqa video kontent.</p><a href="#ariza" data-type="Reels">Ariza qoldirish <span>→</span></a></article>
-        <article class="svc"><span class="fmt">16:9 · ko'p kamerali</span><h3>Podkast</h3><p>Mukammal ovoz va bir nechta kamera bilan professional audio-video suhbatlar.</p><a href="#ariza" data-type="Podkast">Ariza qoldirish <span>→</span></a></article>
-        <article class="svc"><span class="fmt">Tadbir · joyida syomka</span><h3>Seminar</h3><p>Katta tadbir, taqdimot va ma'ruzalarni yuqori sifatda tasvirga olish.</p><a href="#ariza" data-type="Boshqa">Ariza qoldirish <span>→</span></a></article>
-        <article class="svc"><span class="fmt">Kurs · seriya</span><h3>Darslik videolari</h3><p>Kurslar, onlayn maktablar va ta'lim loyihalari uchun video darsliklar.</p><a href="#ariza" data-type="YouTube video">Ariza qoldirish <span>→</span></a></article>
-        <article class="svc"><span class="fmt">Studiya · maxsus yorug'lik</span><h3>Intervyu videolari</h3><p>Biznes egalari va ekspertlar uchun maxsus yoritilgan studiyaviy intervyular.</p><a href="#ariza" data-type="YouTube video">Ariza qoldirish <span>→</span></a></article>
-        <article class="svc"><span class="fmt">3 zal · jihozlangan</span><h3>Studiya ijarasi</h3><p>Zamonaviy uskunalar bilan jihozlangan tayyor zallarni ijaraga olish.</p><a href="#ariza" data-type="Boshqa">Ariza qoldirish <span>→</span></a></article>
-      </div>
-      <div class="perks">
-        <span class="perk">Studiya ijarasi narxga kiritilgan</span>
-        <span class="perk">Project Manager xizmati</span>
-        <span class="perk">Tayyor kontent 5 ish kunida</span>
-        <span class="perk">Mijoz ofisida syomka ham mumkin</span>
+        <article class="svc"><span class="fmt">9:16 · 15–90 s</span><h3>Reels</h3><p>Biznesingiz uchun tez tarqaladigan dinamik va qisqa video kontent.</p><a href="#forma" data-type="Reels">Ariza qoldirish <span>→</span></a></article>
+        <article class="svc"><span class="fmt">16:9 · ko'p kamerali</span><h3>Podkast</h3><p>Mukammal ovoz va bir nechta kamera bilan professional audio-video suhbatlar.</p><a href="#forma" data-type="Podkast">Ariza qoldirish <span>→</span></a></article>
+        <article class="svc"><span class="fmt">Tadbir · joyida syomka</span><h3>Seminar</h3><p>Katta tadbir, taqdimot va ma'ruzalarni yuqori sifatda tasvirga olish.</p><a href="#forma" data-type="Boshqa">Ariza qoldirish <span>→</span></a></article>
+        <article class="svc"><span class="fmt">Kurs · seriya</span><h3>Darslik videolari</h3><p>Kurslar, onlayn maktablar va ta'lim loyihalari uchun video darsliklar.</p><a href="#forma" data-type="YouTube video">Ariza qoldirish <span>→</span></a></article>
+        <article class="svc"><span class="fmt">Studiya · maxsus yorug'lik</span><h3>Intervyu videolari</h3><p>Biznes egalari va ekspertlar uchun maxsus yoritilgan studiyaviy intervyular.</p><a href="#forma" data-type="YouTube video">Ariza qoldirish <span>→</span></a></article>
+        <article class="svc"><span class="fmt">3 zal · jihozlangan</span><h3>Studiya ijarasi</h3><p>Zamonaviy uskunalar bilan jihozlangan tayyor zallarni ijaraga olish.</p><a href="#forma" data-type="Boshqa">Ariza qoldirish <span>→</span></a></article>
       </div>
     </div>
   </section>
@@ -420,8 +411,8 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
         <li class="step"><span class="dot">1</span><span class="when">1-kun</span><h3>Ariza</h3><p>Formani to'ldirasiz, menejerimiz qo'ng'iroq qilib, vazifani aniqlaydi.</p></li>
         <li class="step"><span class="dot">2</span><span class="when">1–2-kun</span><h3>Reja va PM</h3><p>Project Manager biriktiriladi, format va syomka sanasi kelishiladi. Ssenariyni siz tayyorlaysiz.</p></li>
         <li class="step"><span class="dot">3</span><span class="when">Syomka kuni</span><h3>Syomka</h3><p>Studiyamizda yoki ofisingizda professional uskunalar bilan tasvirga olamiz.</p></li>
-        <li class="step"><span class="dot">4</span><span class="when">Montaj</span><h3>Montaj</h3><p>To'liq video va Instagram uchun tizer tayyorlanadi, PM sifatni tekshiradi.</p></li>
-        <li class="step"><span class="dot">5</span><span class="when">5 ish kuni ichida</span><h3>Topshirish</h3><p>Tayyor kontent kelishilgan muddatda sizga topshiriladi.</p></li>
+        <li class="step"><span class="dot">4</span><span class="when">3 kun</span><h3>Montaj</h3><p>Videolar montaji bajariladi, PM montaj sifatini tekshiradi va sizga videolarni topshiradi.</p></li>
+        <li class="step"><span class="dot">5</span><span class="when">5 ish kuni ichida</span><h3>Topshirish</h3><p>Tayyor kontent kelishilgan muddatda sizga topshiriladi. Tasdiqlab berasiz.</p></li>
       </ol>
     </div>
   </section>
@@ -430,9 +421,8 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
   <section class="apply-sec" id="ariza">
     <div class="wrap apply">
       <div class="side">
-        <p class="eyebrow">Ro'yxatdan o'tish</p>
-        <h2>Tizimli video kontent yaratishni bugun boshlang</h2>
-        <p class="lead">Ariza qoldiring, menejerimiz ish vaqtida 15 daqiqa ichida bog'lanib, loyihangiz uchun format va narxni aniqlab beradi.</p>
+        <p class="eyebrow">ISOMEDIA kontaktlari</p>
+        <h2>Savollaringiz bo'lsa, aloqaga chiqing</h2>
         <div class="direct" id="aloqa">
           <a href="tel:+998916013246"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CCD0CF" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg></span><span><small>Qo'ng'iroq qiling</small><b>+998 91 601 32 46</b></span></a>
           <a href="https://t.me/isomedia_uz" target="_blank" rel="noopener"><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CCD0CF" stroke-width="1.6" stroke-linejoin="round"><path d="M21 4L3 11l6 2 2 6 3-4 5 4z"/><path d="M9 13l8-6"/></svg></span><span><small>Telegram</small><b>@isomedia_uz</b></span></a>
@@ -441,10 +431,9 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id="forma">
         <div id="formView">
           <h3>Ariza qoldiring</h3>
-          <p class="sub">3 ta maydon, 30 soniya. Ma'lumotlaringiz uchinchi shaxslarga berilmaydi.</p>
           <form id="leadForm" novalidate>
             <div class="field" id="f-name">
               <label for="name">Ismingiz</label>
@@ -532,7 +521,7 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
         <ul>
           <li><a href="#xizmatlar">Xizmatlar</a></li>
           <li><a href="#jarayon">Ish jarayoni</a></li>
-          <li><a href="#ariza">Ariza qoldirish</a></li>
+          <li><a href="#forma">Ariza qoldirish</a></li>
         </ul>
       </div>
     </div>
@@ -542,7 +531,7 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
 
 <div class="mbar" id="mbar">
   <a class="btn btn-ghost" href="https://t.me/isomedia_uz" target="_blank" rel="noopener" aria-label="Telegram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#CCD0CF" stroke-width="1.6" stroke-linejoin="round"><path d="M21 4L3 11l6 2 2 6 3-4 5 4z"/><path d="M9 13l8-6"/></svg></a>
-  <a class="btn btn-primary" href="#ariza">Ariza qoldirish</a>
+  <a class="btn btn-primary" href="#forma">Ariza qoldirish</a>
 </div>
 
 <script>
@@ -566,7 +555,7 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
 
   // Xizmat kartasidagi tugma formatni oldindan tanlaydi
   document.querySelectorAll('[data-type]').forEach(function(a){
-    a.addEventListener('click',function(){type.value=a.getAttribute('data-type');type.dispatchEvent(new Event('change'))});
+    a.addEventListener('click',function(){type.value=a.getAttribute('data-type');type.dispatchEvent(new Event('change'));setTimeout(function(){name.focus({preventScroll:true})},500)});
   });
 
   // Telefon maskasi: 90 123 45 67
@@ -616,7 +605,7 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
   });
 
   // Mobil pastki panel: forma ko'ringanda yashirinadi
-  var bar=document.getElementById('mbar'),sec=document.getElementById('ariza');
+  var bar=document.getElementById('mbar'),sec=document.getElementById('forma');
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){es.forEach(function(e){bar.classList.toggle('hide',e.isIntersecting)})},{threshold:.15}).observe(sec);
   }
