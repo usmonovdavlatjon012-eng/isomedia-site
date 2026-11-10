@@ -598,7 +598,6 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
     fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)})
       .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
       .then(function(){
-        if(window.fbq){try{fbq('track','Lead',{content_name:lead.type},{eventID:eventId})}catch(_){}}
         document.getElementById('formView').hidden=true;
         document.getElementById('successView').hidden=false;
         document.getElementById('successTitle').textContent='Rahmat, '+lead.name+'! Arizangiz qabul qilindi';
