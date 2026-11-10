@@ -6,7 +6,7 @@
 // Bittasi ishlamasa ham qolganlari ishlaydi, ariza yo'qolmaydi.
 //
 // Vercel → Settings → Environment Variables (README'da batafsil):
-//   TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+//   TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, [TELEGRAM_THREAD_ID — guruh mavzusi (topic) ID'si]
 //   AMO_DOMAIN, AMO_TOKEN, [AMO_PIPELINE_ID, AMO_STATUS_ID, AMO_RESPONSIBLE_ID]
 //   META_PIXEL_ID, META_CAPI_TOKEN, [META_TEST_EVENT_CODE, META_API_VERSION]
 //   SHEETS_WEBHOOK_URL, SHEETS_SECRET
@@ -196,7 +196,11 @@ async function sendToTelegram(lead, amo, sheets) {
   const r = await fetchJson(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chatId, text: lines.join('\n'), parse_mode: 'HTML', disable_web_page_preview: true }),
+    body: JSON.stringify({
+      chat_id: chatId,
+      message_thread_id: /^\d+$/.test(process.env.TELEGRAM_THREAD_ID || '') ? Number(process.env.TELEGRAM_THREAD_ID) : undefined,
+      text: lines.join('\n'), parse_mode: 'HTML', disable_web_page_preview: true,
+    }),
   });
   if (!r.ok || !r.data || !r.data.ok) {
     console.error('Telegram xatosi:', r.status, JSON.stringify(r.data).slice(0, 400));

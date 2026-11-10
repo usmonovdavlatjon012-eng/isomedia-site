@@ -11,6 +11,7 @@
  *       AMO_STATUS_ID       — (ixtiyoriy)
  *       TELEGRAM_BOT_TOKEN  — ogohlantirishlar uchun
  *       TELEGRAM_CHAT_ID
+ *       TELEGRAM_THREAD_ID  — (ixtiyoriy) guruh mavzusi (topic) ID'si
  *  3. Funksiyalar ro'yxatidan `setup` ni tanlab, Run bosing (ruxsat so'raydi).
  *  4. Deploy → New deployment → Web app: Execute as "Me", Who has access "Anyone".
  *     Berilgan /exec linkini Vercel'dagi SHEETS_WEBHOOK_URL ga qo'ying.
@@ -167,7 +168,7 @@ function telegram_(p, text) {
   if (!p.TELEGRAM_BOT_TOKEN || !p.TELEGRAM_CHAT_ID) return;
   UrlFetchApp.fetch('https://api.telegram.org/bot' + p.TELEGRAM_BOT_TOKEN + '/sendMessage', {
     method: 'post', contentType: 'application/json', muteHttpExceptions: true,
-    payload: JSON.stringify({ chat_id: p.TELEGRAM_CHAT_ID, text: text, parse_mode: 'HTML', disable_web_page_preview: true })
+    payload: JSON.stringify({ chat_id: p.TELEGRAM_CHAT_ID, message_thread_id: /^\d+$/.test(p.TELEGRAM_THREAD_ID || '') ? Number(p.TELEGRAM_THREAD_ID) : undefined, text: text, parse_mode: 'HTML', disable_web_page_preview: true })
   });
 }
 

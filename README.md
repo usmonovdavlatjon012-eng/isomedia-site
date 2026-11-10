@@ -26,6 +26,7 @@ User agent saqlanadi — keyin amoCRM'dagi "Sifatli lid" / "Sotildi" statuslarin
 |---|---|
 | `TELEGRAM_BOT_TOKEN` | BotFather bergan token |
 | `TELEGRAM_CHAT_ID` | guruh ID'si (`-100...`) |
+| `TELEGRAM_THREAD_ID` | (ixtiyoriy) guruh mavzusi (topic) ID'si |
 | `AMO_DOMAIN` | masalan `isomedia.amocrm.ru` |
 | `AMO_TOKEN` | amoCRM integratsiyasining uzoq muddatli tokeni |
 | `AMO_PIPELINE_ID`, `AMO_STATUS_ID`, `AMO_RESPONSIBLE_ID` | (ixtiyoriy) voronka, bosqich, mas'ul |
