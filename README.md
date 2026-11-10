@@ -38,7 +38,7 @@ User agent saqlanadi — keyin amoCRM'dagi "Sifatli lid" / "Sotildi" statuslarin
 O'zgaruvchilarni qo'shgandan keyin: Deployments → ⋯ → Redeploy.
 
 ## Meta Pixel (brauzer)
-`index.html` boshidagi `window.PIXEL_ID=''` ga Pixel ID'ni yozing — `META_PIXEL_ID` bilan bir xil.
+Pixel kodi `index.html` ning `<head>` qismida (ID 1717612296593134). Kodda faqat PageView bor, Lead Events Manager'da sozlanadi.
 
 ## Google Sheets
 `apps-script/Code.gs` boshidagi izohda o'rnatish bosqichlari bor.
