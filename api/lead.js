@@ -6,6 +6,7 @@
 // Vercel → Settings → Environment Variables:
 //   TELEGRAM_BOT_TOKEN   BotFather bergan token
 //   TELEGRAM_CHAT_ID     guruh ID'si (-100... bilan boshlanadi)
+//   TELEGRAM_THREAD_ID   (ixtiyoriy) guruh mavzusi (topic) ID'si
 //   AMO_DOMAIN           masalan: isomedia.amocrm.ru
 //   AMO_TOKEN            amoCRM'dagi integratsiyaning uzoq muddatli tokeni
 //   AMO_PIPELINE_ID      (ixtiyoriy) voronka ID'si
@@ -119,7 +120,11 @@ async function sendToTelegram(lead, amo) {
   const r = await fetchJson(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chatId, text: lines.join('\n'), parse_mode: 'HTML', disable_web_page_preview: true }),
+    body: JSON.stringify({
+      chat_id: chatId,
+      message_thread_id: /^\d+$/.test(process.env.TELEGRAM_THREAD_ID || '') ? Number(process.env.TELEGRAM_THREAD_ID) : undefined,
+      text: lines.join('\n'), parse_mode: 'HTML', disable_web_page_preview: true,
+    }),
   });
   if (!r.ok || !r.data || !r.data.ok) {
     console.error('Telegram xatosi:', r.status, JSON.stringify(r.data).slice(0, 400));
