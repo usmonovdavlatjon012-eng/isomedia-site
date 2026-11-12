@@ -5,9 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ISOMEDIA — video production studiya, Toshkent</title>
 <meta name="description" content="ISOMEDIA — biznes va ekspertlar uchun tizimlashgan professional video production studiya. Reels, podkast, darslik, intervyu, seminar va studiya ijarasi. Toshkent.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="assets/fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Jost";src:url("assets/fonts/jost.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url("assets/fonts/instrument-sans.woff2") format("woff2");font-weight:400 700;font-style:normal;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url("assets/fonts/jetbrains-mono.woff2") format("woff2");font-weight:100 800;font-style:normal;font-display:swap}
+</style>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -39,6 +43,7 @@ src="https://www.facebook.com/tr?id=1717612296593134&ev=PageView&noscript=1"
   --slate:#253745;    /* chegaralar, kartalar */
   --steel:#4A5C6A;    /* ikkinchi darajali chiziqlar */
   --mist:#9BA8AB;     /* ikkinchi darajali matn */
+  --dim:#8494A0;      /* kichik yordamchi matn (kontrast 4.5:1 dan yuqori) */
   --fog:#CCD0CF;      /* asosiy matn */
   --paper:#EEF0EF;    /* sarlavhalar, tugma */
   --rec:#E5484D;      /* faqat REC belgisi va xatolar */
@@ -57,7 +62,7 @@ html{background:#02080B}
 body{margin:0;background:var(--ink);color:var(--fog);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 .wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-.logo{display:block;width:132px;aspect-ratio:800/149;max-width:100%;background:var(--paper);-webkit-mask:url("assets/logo-mask.png") center/contain no-repeat;mask:url("assets/logo-mask.png") center/contain no-repeat}
+.logo{display:block;width:132px;aspect-ratio:800/149;max-width:100%;background:var(--paper);-webkit-mask:url("assets/logo-mask.webp") center/contain no-repeat;mask:url("assets/logo-mask.webp") center/contain no-repeat}
 .eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:"";width:22px;height:1px;background:var(--steel)}
 h1,h2,h3{font-family:var(--f-display);font-weight:300;color:var(--paper);text-wrap:balance;margin:0;letter-spacing:-.01em}
@@ -116,7 +121,7 @@ header .btn{padding:11px 20px;font-size:14px}
 @media (max-width:560px){.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}.corner{width:22px;height:22px}}
 
 /* Light bands: same component tokens, remapped */
-.light{--ink:#FFFFFF;--deep:#F2F4F4;--slate:#DDE3E5;--steel:#7A8A94;--mist:#4A5C6A;--fog:#253745;--paper:#06141B;background:var(--ink);color:var(--fog)}
+.light{--ink:#FFFFFF;--deep:#F2F4F4;--slate:#DDE3E5;--steel:#7A8A94;--dim:#5E6E79;--mist:#4A5C6A;--fog:#253745;--paper:#06141B;background:var(--ink);color:var(--fog)}
 .light.alt{--ink:#F4F6F6;background:var(--ink)}
 .light .svc{background:#fff}
 .light .svc:hover{background:#FAFBFB}
@@ -170,7 +175,7 @@ header .btn{padding:11px 20px;font-size:14px}
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(74,92,106,.35);border:1px solid rgba(74,92,106,.35);border-radius:var(--r);overflow:hidden}
 .svc{background:var(--ink);padding:30px 26px 28px;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;min-width:0;transition:background .25s}
 .svc:hover{background:var(--deep)}
-.svc .fmt{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--steel);text-transform:uppercase}
+.svc .fmt{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--dim);text-transform:uppercase}
 .svc p{color:var(--mist);font-size:15px}
 .svc a{font-size:14px;color:var(--fog);text-decoration:none;display:inline-flex;gap:8px;align-items:center;margin-top:8px}
 .svc a:hover{color:var(--paper)}
@@ -187,7 +192,7 @@ header .btn{padding:11px 20px;font-size:14px}
 .process::before{content:"";position:absolute;left:0;right:0;top:15px;height:1px;background:linear-gradient(90deg,var(--steel),rgba(74,92,106,.15))}
 .step{position:relative;display:grid;gap:12px;align-content:start;min-width:0}
 .step .dot{width:31px;height:31px;border-radius:50%;background:var(--ink);border:1px solid var(--steel);display:grid;place-items:center;font:500 12px/1 var(--f-mono);color:var(--paper)}
-.step .when{font-family:var(--f-mono);font-size:12px;color:var(--steel);letter-spacing:.06em}
+.step .when{font-family:var(--f-mono);font-size:12px;color:var(--dim);letter-spacing:.06em}
 .step h3{font-size:19px}
 .step p{font-size:14.5px;color:var(--mist)}
 @media (max-width:860px){
@@ -249,12 +254,12 @@ details p{padding-bottom:22px;color:var(--mist);max-width:65ch}
 /* Footer */
 footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
 .foot{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:32px}
-.foot h4{margin:0 0 14px;font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--steel)}
+.foot .fh{margin:0 0 14px;font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
 .foot a{text-decoration:none;color:var(--fog);font-size:15px}
 .foot a:hover{color:var(--paper)}
 .foot p{color:var(--mist);font-size:15px;max-width:34ch}
-.copy{margin-top:48px;padding-top:24px;border-top:1px solid rgba(74,92,106,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--steel)}
+.copy{margin-top:48px;padding-top:24px;border-top:1px solid rgba(74,92,106,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--dim)}
 @media (max-width:760px){.foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:span 2}}
 
 /* Mobile sticky CTA */
@@ -317,25 +322,25 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
         <p class="eyebrow">Bizga ishonch bildirgan loyihalar</p>
       </div>
       <ul class="names">
-        <li><img src="assets/clients/edu-action.webp" alt="Edu-Action" width="360" height="84" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/uztelecom.webp" alt="Uztelecom" width="176" height="150" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/edu-master-event-zone.webp" alt="Edu Master Event Zone" width="125" height="150" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/edu-action.webp" alt="Edu-Action" width="300" height="70" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/uztelecom.webp" alt="Uztelecom" width="136" height="116" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/edu-master-event-zone.webp" alt="Edu Master Event Zone" width="97" height="116" loading="lazy" decoding="async"></li>
         <li><img src="assets/clients/iman.webp" alt="IMAN" width="138" height="33" loading="lazy" decoding="async"></li>
         <li><img src="assets/clients/isystem-it-academy.webp" alt="iSystem IT academy" width="162" height="54" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/elma.webp" alt="ELMA" width="228" height="150" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/elma.webp" alt="ELMA" width="176" height="116" loading="lazy" decoding="async"></li>
         <li><img src="assets/clients/insan.webp" alt="insan" width="281" height="83" loading="lazy" decoding="async"></li>
         <li><img src="assets/clients/oxra.webp" alt="OXRA" width="175" height="51" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/nurinvest.webp" alt="Nurinvest" width="360" height="81" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/shark-sales-school.webp" alt="SHARK Sales School" width="228" height="150" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/lets-animate.webp" alt="Let's Animate" width="246" height="150" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/nurinvest.webp" alt="Nurinvest" width="300" height="68" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/shark-sales-school.webp" alt="SHARK Sales School" width="176" height="116" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/lets-animate.webp" alt="Let's Animate" width="190" height="116" loading="lazy" decoding="async"></li>
         <li><img src="assets/clients/contab.webp" alt="Contab" width="168" height="52" loading="lazy" decoding="async"></li>
         <li><img src="assets/clients/eurosoft.webp" alt="Eurosoft" width="158" height="43" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/jetso.webp" alt="JETSO" width="182" height="150" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/tochka-rosta.webp" alt="Точка роста" width="334" height="150" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/isft-instituti.webp" alt="ISFT instituti" width="200" height="150" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/sales-doctor.webp" alt="Sales Doctor" width="360" height="130" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/mind-forge.webp" alt="Mind Forge" width="360" height="106" loading="lazy" decoding="async"></li>
-        <li><img src="assets/clients/best-publication.webp" alt="Best Publication" width="150" height="150" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/jetso.webp" alt="JETSO" width="141" height="116" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/tochka-rosta.webp" alt="Точка роста" width="258" height="116" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/isft-instituti.webp" alt="ISFT instituti" width="155" height="116" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/sales-doctor.webp" alt="Sales Doctor" width="300" height="108" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/mind-forge.webp" alt="Mind Forge" width="300" height="88" loading="lazy" decoding="async"></li>
+        <li><img src="assets/clients/best-publication.webp" alt="Best Publication" width="116" height="116" loading="lazy" decoding="async"></li>
         <li class="more"><b>280+</b><span>va boshqa hamkorlar</span></li>
       </ul>
     </div>
@@ -514,7 +519,7 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
         <p>Biznesingiz uchun tizimlashgan professional video production xizmati.</p>
       </div>
       <div>
-        <h4>Aloqa</h4>
+        <p class="fh">Aloqa</p>
         <ul>
           <li><a href="tel:+998916013246">+998 91 601 32 46</a></li>
           <li><a href="https://t.me/isomedia_uz" target="_blank" rel="noopener">Telegram</a></li>
@@ -522,14 +527,14 @@ footer{border-top:1px solid rgba(74,92,106,.35);padding-block:56px 40px}
         </ul>
       </div>
       <div>
-        <h4>Manzil</h4>
+        <p class="fh">Manzil</p>
         <ul>
           <li style="color:var(--fog);font-size:15px">Toshkent, Yunusobod 7,<br>Moyqo'rg'on 49</li>
           <li><a href="https://yandex.uz/maps/-/CXVLnE56" target="_blank" rel="noopener">Xaritada ochish ↗</a></li>
         </ul>
       </div>
       <div>
-        <h4>Bo'limlar</h4>
+        <p class="fh">Bo'limlar</p>
         <ul>
           <li><a href="#xizmatlar">Xizmatlar</a></li>
           <li><a href="#jarayon">Ish jarayoni</a></li>
